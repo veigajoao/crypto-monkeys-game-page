@@ -1,6 +1,18 @@
 import Web3 from "web3";
 import detectEthereumProvider from '@metamask/detect-provider';
 
+// import {abiWhitelist, abiBusd, contractAddress, busdAddress} from './WhitelistedPresale';
+
+
+import contractFileWhitelist from './contracts_build/WhiteListedPresale.json';
+import contractFileBananacoin from './contracts_build/BananaCoin.json';
+
+const abiWhitelist = contractFileWhitelist.abi;
+const whitelistAddress = "0x4Dd4835fceD7679792D5191C4446726Db1Ff1900";
+
+const abiBusd = contractFileBananacoin.abi;
+const busdAddress = "0x59c7d11fB3B1ebE6B4c467279c851DFF225830D4";
+
 const bscTestId = '0x61';
 const bscTestRpcurls = [
     'https://data-seed-prebsc-1-s1.binance.org:8545/',
@@ -10,7 +22,7 @@ const bscTestRpcurls = [
     'https://data-seed-prebsc-1-s3.binance.org:8545/',
     'https://data-seed-prebsc-2-s3.binance.org:8545/'
 ];
-const bscTestBlockExplorer = 'https://testnet.bscscan.com';
+const bscTestBlockExplorer = ['https://testnet.bscscan.com'];
 
 const bscId = '0x38';
 const bscRpcurls = [
@@ -57,7 +69,7 @@ const switchToBsc = async () => {
                         symbol: 'BNB', // 2-6 characters long
                         decimals: 18,
                     },
-                    blockExplorerUrls: bscTestBlockExplorer,
+                    blockExplorerUrls: [bscTestBlockExplorer],
                 },
                 ],
             });
@@ -76,7 +88,9 @@ const switchToBsc = async () => {
 const checkNetwork = async () => {
     const chainId = await ethereum.request({ method: 'eth_chainId' });
     if (chainId != bscTestId) {
-        return switchToBsc();
+        return await switchToBsc();
+    } else {
+        return true;
     }
 }
 
@@ -85,7 +99,11 @@ const connectWallet = async () => {
     let respArray;
     //check if code is on client or server side
     if (typeof window !== 'undefined') {
+        
         provider = await detectEthereumProvider();
+        if (provider == null) {
+            provider = 'undefined';
+        }
     } else {
         provider = 'undefined';
     }
@@ -93,11 +111,13 @@ const connectWallet = async () => {
     if (provider !== 'undefined') {
         //if on client environment
         web3 = new Web3(provider);
-        let networkSuccess = checkNetwork();
+        let networkSuccess = await checkNetwork();
         respArray = {
             isUserWallet: true,
             web3: web3,
             networkSuccess: networkSuccess,
+            whitelistContract: new web3.eth.Contract(abiWhitelist, whitelistAddress),
+            priceTokenContract:  new web3.eth.Contract(abiBusd, busdAddress)
         };
     } else {
         //if on server environment
@@ -106,9 +126,11 @@ const connectWallet = async () => {
             );
         web3 = new Web3(providerServer);
         respArray = {
-            isUserWallet: true,
+            isUserWallet: false,
             web3: web3,
             networkSuccess: true,
+            whitelistContract: false,
+            priceTokenContract: false
         };
     }
     return respArray;
