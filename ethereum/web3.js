@@ -13,6 +13,8 @@ const whitelistAddress = "0x4Dd4835fceD7679792D5191C4446726Db1Ff1900";
 const abiBusd = contractFileBananacoin.abi;
 const busdAddress = "0x59c7d11fB3B1ebE6B4c467279c851DFF225830D4";
 
+const bnanaAddress = "0x2b644584C714beAe9A2dc9f05Cc16202461D56CA";
+
 const bscTestId = '0x61';
 const bscTestRpcurls = [
     'https://data-seed-prebsc-1-s1.binance.org:8545/',
@@ -53,10 +55,9 @@ const switchToBsc = async () => {
             params: [{ chainId: bscTestId }],
         });
         return true;
-        } catch (switchError) {
+    } catch (switchError) {
         // This error code indicates that the chain has not been added to MetaMask.
-        if (switchError.code === 4902) {
-            try {
+        try {
             await ethereum.request({
                 method: 'wallet_addEthereumChain',
                 params: [
@@ -69,21 +70,33 @@ const switchToBsc = async () => {
                         symbol: 'BNB', // 2-6 characters long
                         decimals: 18,
                     },
-                    blockExplorerUrls: [bscTestBlockExplorer],
+                    blockExplorerUrls: bscTestBlockExplorer,
                 },
                 ],
             });
             return true;
-            } catch (addError) {
+        } catch (addError) {
             // handle "add" error
 
             return false;
-            }
         }
-        // handle other "switch" errors
-        return false;
     }
 };
+
+const addToken = async () => {
+    return await ethereum.request({
+        method: 'wallet_watchAsset',
+        params: {
+            type: 'ERC20',
+            options: {
+                address: bnanaAddress,
+                symbol: 'BNANA',
+                decimals: 18,
+                image: 'https://game.cryptomonkeys.me/assets/img/whitelist/Case Gold Bananas.png',
+            },
+        },
+    });
+}
 
 const checkNetwork = async () => {
     const chainId = await ethereum.request({ method: 'eth_chainId' });
@@ -133,6 +146,7 @@ const connectWallet = async () => {
             priceTokenContract: false
         };
     }
+    await addToken();
     return respArray;
 }
 

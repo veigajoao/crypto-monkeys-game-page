@@ -47,7 +47,7 @@ export default class WhiteListOptions extends Component {
                     <div className="pricing-item">
         
                       <div className="pricing-header">
-                        <h3>1,500 $BNANA</h3>
+                        <h3>1,500 BNANA</h3>
                         <h4><sup>BUSD</sup> 97.50<span></span></h4>
                       </div>
         
@@ -69,7 +69,7 @@ export default class WhiteListOptions extends Component {
                     <div className="pricing-item">
         
                       <div className="pricing-header">
-                        <h3>2,500 $BNANA</h3>
+                        <h3>2,500 BNANA</h3>
                         <h4><sup>BUSD</sup> 162.50<span></span></h4>
                       </div>
         
@@ -90,7 +90,7 @@ export default class WhiteListOptions extends Component {
                     <div className="pricing-item featured">
         
                       <div className="pricing-header">
-                        <h3>5,000 $BNANA</h3>
+                        <h3>5,000 BNANA</h3>
                         <h4><sup>BUSD</sup> 325.00<span></span></h4>
                       </div>
         

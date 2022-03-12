@@ -6,6 +6,10 @@ import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalTitle from "react-bootstrap/ModalTitle";
 
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+
+
 export default class Layout extends Component {
 
     constructor(props) {
@@ -180,6 +184,11 @@ export default class Layout extends Component {
         } else {
             modal = ""
         }
+
+        const renderTooltip = props => (
+            <Tooltip {...props}>Coming soon</Tooltip>
+        );
+
         return (
             <div>
                 <Head>
@@ -212,23 +221,35 @@ export default class Layout extends Component {
                         </a>
     
                         {metaMaskButton1}
-    
+
                         <nav id="navbar" className="navbar">
                             <ul>
-                            <li className="dropdown"><a href="#"><span>Game</span> <i className="bi bi-chevron-down dropdown-indicator"></i></a>
-                                <ul>
-                                <li><a href="index.html" className="fw-bold active">Farm mode</a></li>
-                                <li><a href="index-2.html"className="fw-bold">Strategy mode</a></li>
-                                <li><a href="index-3.html" className="fw-bold">PvP mode</a></li>
-                                </ul>
+                            <li> 
+                                <OverlayTrigger placement="bottom" overlay={renderTooltip}>
+                                    <a href="#"><span>Game</span> <i className="bi bi-chevron-down dropdown-indicator"></i></a>
+                                </OverlayTrigger>
                             </li>
-                            <li><a className="nav-link scrollto" href="index.html#about">Buy Token</a></li>
-                            <li><a className="nav-link scrollto" href="index.html#services">NFTs</a></li>
+                            {/* <li className="dropdown"><a href="#"><span>Game</span> <i className="bi bi-chevron-down dropdown-indicator"></i></a>
+                                <ul>
+                                <li><a href="#" className="fw-bold active">Farm mode</a></li>
+                                <li><a href="#"className="fw-bold">Strategy mode</a></li>
+                                <li><a href="#" className="fw-bold">PvP mode</a></li>
+                                </ul>
+                            </li> */}
+                            <li>
+                                    <a className="nav-link scrollto" href="#pricing">Buy Token</a>
+                            </li>
+                            <li>
+                                <OverlayTrigger placement="bottom" overlay={renderTooltip}>
+                                    <a className="nav-link scrollto" href="#">NFTs</a>
+                                </OverlayTrigger>
+                            </li>
                             </ul>
                             {metaMaskButton2}
                             <i className="bi bi-list mobile-nav-toggle d-none"></i>
                         </nav>
                     </div>
+
                 </header>
     
                 {this.props.children}
@@ -243,9 +264,9 @@ export default class Layout extends Component {
                         </div>
     
                         <div className="social-links order-first order-lg-last mb-3 mb-lg-0">
-                        <a href="#" className="twitter"><i className="bi bi-twitter"></i></a>
-                        <a href="#" className="instagram"><i className="bi bi-telegram"></i></a>
-                        <a href="#" className="google-plus"><i className="bi bi-discord"></i></a>
+                            <a href="https://twitter.com/_CryptoMonkeys" rel="noopener noreferrer" target="_blank" className="twitter"><i className="bi bi-twitter"></i></a>
+                            <a href="https://t.me/cryptomonkeysgame" rel="noopener noreferrer" target="_blank" className="instagram"><i className="bi bi-telegram"></i></a>
+                            <a href="https://discord.io/CryptoMonkeys" rel="noopener noreferrer" target="_blank" className="google-plus"><i className="bi bi-discord"></i></a>
                         </div>
                     </div>
                     </div>
