@@ -131,6 +131,7 @@ export default class Layout extends Component {
                         (2) you do not own enough BUSD tokens for the purchase, remembering that 
                         the contract address for BUSD in BSC is 0xe9e7cea3dedca5984780bafc599bd69add087d56; <br/><br/>
                         (3) you're not whitelisted or have already bought you quota; <br/><br/>
+                        (4) the sale hasn't opened yet, remember that it starts at 12:00 (noon) UTC <br/><br/>
                         (4) your internet connection is problematic at the moment. <br/><br/>
                         If the error persists, please <a href="https://t.me/chatcryptomonkeys" rel="noopener noreferrer" target="_blank">contact our support team through the telegram group</a>
                     </div>
@@ -168,9 +169,11 @@ export default class Layout extends Component {
                     </div>
                     <div className="modal-body">
                         Your current wallet is not registered in our whitelist :( <br/><br/>
+                        You can check all selected addresses <a href="https://cryptomonkeys.me/whitelist.txt" rel="noopener noreferrer" target="_blank">in this link</a> <br/><br/>
                         This might be because you already bought your $BNANAS with this wallet in the whitelist <br/><br/>
                         Also, you can have multiple different wallets inside yout metamsk. Check that 
                         you are currently using the correct wallet. <br/><br/>
+                        Refresh this page and try again <br/><br/>
                         In case you want to buy but are not in the whitelist, you'll have to 
                         wait until the public sale, that is scheduled for the 27th march. <br/><br/>
                         Join our <a href="https://discord.io/CryptoMonkeys" rel="noopener noreferrer" target="_blank">discord server</a> and <a href="https://t.me/chatcryptomonkeys" rel="noopener noreferrer" target="_blank">telegram chat</a> to know more.
@@ -238,6 +241,9 @@ export default class Layout extends Component {
                             </li> */}
                             <li>
                                     <a className="nav-link scrollto" href="#pricing">Buy Token</a>
+                            </li>
+                            <li>
+                                    <a className="nav-link scrollto" href="https://cryptomonkeys.me/whitelist.txt" rel="noopener noreferrer" target="_blank">See Whitelist</a>
                             </li>
                             <li>
                                 <OverlayTrigger placement="bottom" overlay={renderTooltip}>
