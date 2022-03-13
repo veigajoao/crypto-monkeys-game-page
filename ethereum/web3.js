@@ -1,19 +1,16 @@
 import Web3 from "web3";
 import detectEthereumProvider from '@metamask/detect-provider';
 
-// import {abiWhitelist, abiBusd, contractAddress, busdAddress} from './WhitelistedPresale';
-
-
 import contractFileWhitelist from './contracts_build/WhiteListedPresale.json';
 import contractFileBananacoin from './contracts_build/BananaCoin.json';
 
 const abiWhitelist = contractFileWhitelist.abi;
-const whitelistAddress = "0x4Dd4835fceD7679792D5191C4446726Db1Ff1900";
+const whitelistAddress = "0x8E0ED58bAf27CA6f8FE61317C7cf53BB37e5b00f";
 
 const abiBusd = contractFileBananacoin.abi;
-const busdAddress = "0x59c7d11fB3B1ebE6B4c467279c851DFF225830D4";
+const busdAddress = "0xe9e7cea3dedca5984780bafc599bd69add087d56";
 
-const bnanaAddress = "0x2b644584C714beAe9A2dc9f05Cc16202461D56CA";
+const bnanaAddress = "0xf9b27685bfaAF96AaedffD45DA69BF7F5d0ea07D";
 
 const bscTestId = '0x61';
 const bscTestRpcurls = [
@@ -43,6 +40,7 @@ const bscRpcurls = [
     'https://bsc-dataseed4.binance.org/'
 ];
 
+const bscBlockExplorer = ['https://bscscan.com/'];
 
 let web3;
 let provider;
@@ -52,7 +50,7 @@ const switchToBsc = async () => {
     try {
         await ethereum.request({
             method: 'wallet_switchEthereumChain',
-            params: [{ chainId: bscTestId }],
+            params: [{ chainId: bscId }],
         });
         return true;
     } catch (switchError) {
@@ -62,15 +60,15 @@ const switchToBsc = async () => {
                 method: 'wallet_addEthereumChain',
                 params: [
                 {
-                    chainId: bscTestId,
-                    chainName: 'Testnet Binance Smart Chain',
-                    rpcUrls: bscTestRpcurls,
+                    chainId: bscId,
+                    chainName: 'Binance Smart Chain',
+                    rpcUrls: bscRpcurls,
                     nativeCurrency: {
-                        name: 'Test BNB',
-                        symbol: 'BNB', // 2-6 characters long
+                        name: 'BNB',
+                        symbol: 'BNB',
                         decimals: 18,
                     },
-                    blockExplorerUrls: bscTestBlockExplorer,
+                    blockExplorerUrls: bscBlockExplorer,
                 },
                 ],
             });
@@ -100,7 +98,7 @@ const addToken = async () => {
 
 const checkNetwork = async () => {
     const chainId = await ethereum.request({ method: 'eth_chainId' });
-    if (chainId != bscTestId) {
+    if (chainId != bscId) {
         return await switchToBsc();
     } else {
         return true;
