@@ -233,6 +233,9 @@ export default class Layout extends Component {
 
                         <nav id="navbar" className="navbar">
                             <ul>
+                            <li>
+                                    <a className="nav-link scrollto" href="https://cryptomonkeys.me" rel="noopener noreferrer" target="_blank">Main Site</a>
+                            </li>
                             <li> 
                                 <OverlayTrigger placement="bottom" overlay={renderTooltip}>
                                     <a href="#"><span>Game</span> <i className="bi bi-chevron-down dropdown-indicator"></i></a>
