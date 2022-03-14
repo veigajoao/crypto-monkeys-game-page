@@ -249,9 +249,6 @@ export default class Layout extends Component {
                                     <a className="nav-link scrollto" href="#pricing">Buy Token</a>
                             </li>
                             <li>
-                                    <a className="nav-link scrollto" href="https://cryptomonkeys.me/whitelist.txt" rel="noopener noreferrer" target="_blank">See Whitelist</a>
-                            </li>
-                            <li>
                                 <OverlayTrigger placement="bottom" overlay={renderTooltip}>
                                     <a className="nav-link scrollto" href="#">NFTs</a>
                                 </OverlayTrigger>

@@ -15,18 +15,6 @@ export default class WhiteListOptions extends Component {
     }
 
     render () {
-        let banner;
-        if (this.props.isUserWallet) {
-            if (this.props.allowance > 0) {
-                banner = <button type="button" className="btn btn-lg btn-success" disabled>Congrats! You're whitelisted. Time to buy your $BNANAS</button>
-            } else {
-                banner = <button type="button" className="btn btn-lg btn-danger" disabled>Looks like your wallet isn't in the whitelist :( You can try a different wallet or wait for the public sale</button>;
-            }
-            
-        } else {
-            banner = <button type="button" className="btn btn-lg btn-danger" disabled>Connect your wallet to check if you are whitelisted</button>;
-        }
-
         return (
             <main id="main" className="bg-secondary">
             <section id="pricing" className="pricing">
@@ -34,7 +22,7 @@ export default class WhiteListOptions extends Component {
         
                 <div className="section-header">
                   <h2>Whitelist options</h2>
-                  {banner}
+                  <button type="button" className="btn btn-lg btn-success" disabled>Flash sale. Only 100 Wallets will be able to buy $BNANAS at whitelist price</button> 
                   <p className="mt-3">
                     You can only buy one option a single time. After the whitelist period is expired, if there are still tokens left,
                     sales will be opened to everyone for a limited time period.  
