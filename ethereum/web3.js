@@ -130,7 +130,6 @@ const connectWallet = async () => {
             whitelistContract: new web3.eth.Contract(abiWhitelist, whitelistAddress),
             priceTokenContract:  new web3.eth.Contract(abiBusd, busdAddress)
         };
-        console.log(respArray)
         await addToken();
     } else {
         //if on server environment

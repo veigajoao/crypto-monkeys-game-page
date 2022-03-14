@@ -50,7 +50,7 @@ class WhitelistPage extends Component {
 
     async purchaseToken (buyQty) {
         if (this.state.isUserWallet) {
-            if (parseInt(this.state.allowance) > 0) {
+            if (1 > 0) {
                 // * 0.065 * 10**18
                 const price = this.state.web3.utils.toWei(BigNumber(buyQty).multipliedBy("0.065").toString());
                 const correctBuyQty = this.state.web3.utils.toWei(buyQty, "ether");
