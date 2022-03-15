@@ -13,8 +13,8 @@ export default props => {
                 <a href="#pricing" className="btn-get-started scrollto">Buy $BNANA now</a>
             </div>
             <p className="pt-3">
-                We're currently on whitelist phase. We've just release 100 buy spots for the first to buy the token through the 
-                site. Hurry up monkeys!
+                Whitelist just ended. <br/>
+                Stay tuned, token public sale will go live on April 3rd.
             </p>
             </div>
         </section>

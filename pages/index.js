@@ -101,7 +101,7 @@ class WhitelistPage extends Component {
         return (
             <Layout connectClientWallet={_ => this.connectClientWallet()} activeAccount={this.state.activeAccount} fetchInProgress={this.state.fetchInProgress} closeModal={_ => this.closeModal()}>
                 <WhitelistHero/>
-                <WhitelistOptions isUserWallet={this.state.isUserWallet} allowance={this.state.allowance} purchaseFunction={(v) => this.purchaseToken(v)}/>
+                {/* <WhitelistOptions isUserWallet={this.state.isUserWallet} allowance={this.state.allowance} purchaseFunction={(v) => this.purchaseToken(v)}/> */}
             </Layout>
         )
     }
