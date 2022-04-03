@@ -46,11 +46,11 @@ export default props => {
                 <h2>TIME TO HODL <span>$BNANA</span></h2>
             </div>
             <p className="pt-3">
-                Exlusive presale of $BNANA. <br/>
+                Exclusive presale of $BNANA. <br/>
                 Connect your MetaMask and input the amount you want to buy in here. <br/>
                 In this exclusive promotional sale, each BNB will get you 6500 $BNANA tokens (0.07 USD per token).<br/>
                 On April 10th, investors will be able to mint their NFTs and the token will have its launch
-                on PancackeSwap on April 17th, @ 0.09 USD per token. <br/>
+                on PancackeSwap on April 17th, at 0.09 USD per token. <br/>
                 Investors will receive 20% of the token amount immediatelly and another 40% every 30 days.
             </p>
             <div className="input-group mb-3 w-50">
