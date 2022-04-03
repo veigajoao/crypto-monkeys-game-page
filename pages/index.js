@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {connectWallet, checkNetwork} from '../ethereum/web3';
 
 import Layout from '../components/Layout';
-import WhitelistHero from '../components/WhitelistHero';
-import WhitelistOptions from '../components/WhitelistOptions';
+import PresaleHero from '../components/PresaleHero';
 
 import AOS from 'aos';
 import BigNumber from 'bignumber.js';
@@ -18,6 +17,7 @@ class WhitelistPage extends Component {
             networkSuccess: false,
             whitelistContract: false,
             priceTokenContract:  false,
+            presaleContract: "unset",
             allowance: "unset",
             activeAccount: "unset",
             fetchInProgress: false
@@ -30,8 +30,8 @@ class WhitelistPage extends Component {
 
     //handle connection to metamask
     async connectClientWallet() {
-        let {isUserWallet, web3, networkSuccess, whitelistContract, priceTokenContract} = await connectWallet();
-        this.setState({isUserWallet, web3, networkSuccess, whitelistContract, priceTokenContract});
+        let {isUserWallet, web3, networkSuccess, whitelistContract, priceTokenContract, presaleContract} = await connectWallet();
+        this.setState({isUserWallet, web3, networkSuccess, whitelistContract, priceTokenContract, presaleContract});
         if (this.state.isUserWallet) {
             await this.getWalletAllowance();
         } else {
@@ -90,18 +90,35 @@ class WhitelistPage extends Component {
         this.setState({fetchInProgress: false});
     }
 
+    async noMM() {
+        this.setState({fetchInProgress: "noMM"});
+    }
+
+    async loadingTransaction() {
+        this.setState({fetchInProgress: "sendBlock"});
+    }
+
+    async justBought() {
+        this.setState({fetchInProgress: "justBought"});
+    }
+
+    async whitelistBuyFailure() {
+        this.setState({fetchInProgress: "whitelistBuyFailure"});
+    }
+
+    
+
     componentDidMount() {
         AOS.init({
           duration : 2000
         });
-      }
+    }
 
     render() {
 
         return (
-            <Layout connectClientWallet={_ => this.connectClientWallet()} activeAccount={this.state.activeAccount} fetchInProgress={this.state.fetchInProgress} closeModal={_ => this.closeModal()}>
-                <WhitelistHero/>
-                {/* <WhitelistOptions isUserWallet={this.state.isUserWallet} allowance={this.state.allowance} purchaseFunction={(v) => this.purchaseToken(v)}/> */}
+            <Layout connectClientWallet={_ => this.connectClientWallet()} activeAccount={this.state.activeAccount} fetchInProgress={this.state.fetchInProgress} closeModal={_ => this.closeModal()} >
+                <PresaleHero presaleContract={this.state.presaleContract} web3={this.state.web3} metamaskModal={_ => this.noMM()} isUserWallet={this.state.isUserWallet} loadingTransaction={_ => this.loadingTransaction()} justBought={_ => this.justBought()} whitelistBuyFailure={_ => this.whitelistBuyFailure()}/>
             </Layout>
         )
     }

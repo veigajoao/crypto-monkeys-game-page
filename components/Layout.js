@@ -128,11 +128,8 @@ export default class Layout extends Component {
                         Transaction failed at the purchase stage. <br/><br/>
                         This can be caused by <br/><br/>
                         (1) you not approving the transaction when prompted by MetaMask; <br/><br/>
-                        (2) you do not own enough BUSD tokens for the purchase, remembering that 
-                        the contract address for BUSD in BSC is 0xe9e7cea3dedca5984780bafc599bd69add087d56; <br/><br/>
-                        (3) you're not whitelisted or have already bought you quota; <br/><br/>
-                        (4) the sale hasn't opened yet, remember that it starts at 12:00 (noon) UTC <br/><br/>
-                        (4) your internet connection is problematic at the moment. <br/><br/>
+                        (2) you do not own enough BNB for the purchase <br/><br/>
+                        (3) your internet connection is problematic at the moment. <br/><br/>
                         If the error persists, please <a href="https://t.me/chatcryptomonkeys" rel="noopener noreferrer" target="_blank">contact our support team through the telegram group</a>
                     </div>
                     <div className="modal-footer">

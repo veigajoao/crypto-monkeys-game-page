@@ -3,6 +3,8 @@ import detectEthereumProvider from '@metamask/detect-provider';
 
 import contractFileWhitelist from './contracts_build/WhiteListedPresale.json';
 import contractFileBananacoin from './contracts_build/BananaCoin.json';
+import contractFileNft from './contracts_build/CryptoMonkeyChars.json';
+import contractFilePresale from './contracts_build/PublicPresale.json';
 
 const abiWhitelist = contractFileWhitelist.abi;
 const whitelistAddress = "0x8E0ED58bAf27CA6f8FE61317C7cf53BB37e5b00f";
@@ -10,7 +12,13 @@ const whitelistAddress = "0x8E0ED58bAf27CA6f8FE61317C7cf53BB37e5b00f";
 const abiBusd = contractFileBananacoin.abi;
 const busdAddress = "0xe9e7cea3dedca5984780bafc599bd69add087d56";
 
+const abiPresale = contractFilePresale.abi;
+const presaleAddress = "0x0C3fD0A556549D261A9758cc7c6F33f6dde298F7";
+
 const bnanaAddress = "0xf9b27685bfaAF96AaedffD45DA69BF7F5d0ea07D";
+
+const abiNft = contractFileNft.abi;
+const nftAddress = "0x700Ab8d2b5Ecc5d5aE2Ae6D634656F63aEF5040B";
 
 const bscTestId = '0x61';
 const bscTestRpcurls = [
@@ -128,8 +136,12 @@ const connectWallet = async () => {
             web3: web3,
             networkSuccess: networkSuccess,
             whitelistContract: new web3.eth.Contract(abiWhitelist, whitelistAddress),
-            priceTokenContract:  new web3.eth.Contract(abiBusd, busdAddress)
+            priceTokenContract:  new web3.eth.Contract(abiBusd, busdAddress),
+            nftContract: new web3.eth.Contract(abiNft, nftAddress),
+            bnanaContract: new web3.eth.Contract(abiBusd, bnanaAddress),
+            presaleContract: new web3.eth.Contract(abiPresale, presaleAddress),
         };
+        
         await addToken();
     } else {
         //if on server environment
@@ -142,7 +154,9 @@ const connectWallet = async () => {
             web3: web3,
             networkSuccess: true,
             whitelistContract: false,
-            priceTokenContract: false
+            priceTokenContract: false,
+            nftContract: false,
+            bnanaContract: false
         };
     }
     return respArray;
