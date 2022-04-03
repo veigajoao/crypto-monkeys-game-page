@@ -31,7 +31,7 @@ export default props => {
     }
 
     const onChangeFunc = (e) => {
-        const re = /^[0-9\b]+$/;
+        const re = /^\d{1,}(\.\d{0,4})?$/;
         if (e.target.value === '' || re.test(e.target.value)) {
             setFormValue(e.target.value)
         }
@@ -48,12 +48,14 @@ export default props => {
             <p className="pt-3">
                 Exlusive presale of $BNANA. <br/>
                 Connect your MetaMask and input the amount you want to buy in here. <br/>
-                Each BNB will get you 6500 $BNANA tokens.
+                In this exclusive promotional sale, each BNB will get you 6500 $BNANA tokens (0.07 USD per token).<br/>
+                On April 10th, investors will be able to mint their NFTs and the token will have its launch
+                on PancackeSwap on April 17th, @ 0.09 USD per token. <br/>
                 Investors will receive 20% of the token amount immediatelly and another 40% every 30 days.
             </p>
-            <div class="input-group mb-3 w-50">
-                <span class="input-group-text" id="basic-addon3">BNB amount</span>
-                <input type="text" class="form-control" value={formValue} onChange={onChangeFunc}/>
+            <div className="input-group mb-3 w-50">
+                <span className="input-group-text" id="basic-addon3">BNB amount</span>
+                <input type="text" className="form-control" value={formValue} onChange={onChangeFunc}/>
             </div>
             <button onClick={_ => buyTokens(formValue)} className="btn-get-started scrollto">Buy $BNANA now</button>
             </div>
