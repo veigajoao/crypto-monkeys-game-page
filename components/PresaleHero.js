@@ -46,18 +46,11 @@ export default props => {
                 <h2>TIME TO HODL <span>$BNANA</span></h2>
             </div>
             <p className="pt-3">
-                Exclusive presale of $BNANA. <br/>
-                Connect your MetaMask and input the amount you want to buy in here. <br/>
-                In this exclusive promotional sale, each BNB will get you 6500 $BNANA tokens (0.07 USD per token).<br/>
-                On April 10th, investors will be able to mint their NFTs and the token will have its launch
-                on PancackeSwap on April 17th, at 0.09 USD per token. <br/>
-                Investors will receive 20% of the token amount immediatelly and another 40% every 30 days.
+                PRESALE SOLD OUT. <br/>
+                On April 10th you'll be able to test out out beta game and buy NFT boxes. <br/><br/>
+                Stay tuned!
             </p>
-            <div className="input-group mb-3 w-50">
-                <span className="input-group-text" id="basic-addon3">BNB amount</span>
-                <input type="text" className="form-control" value={formValue} onChange={onChangeFunc}/>
-            </div>
-            <button onClick={_ => buyTokens(formValue)} className="btn-get-started scrollto">Buy $BNANA now</button>
+            <button disabled className="btn-get-started scrollto">SOLD OUT :(</button>
             </div>
         </section>
     )
